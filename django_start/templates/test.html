@@ -1,0 +1,31 @@
+{{ greeting|lower }}
+{{ goodbye|lower }}
+
+{{ greeting|truncatewords:1 }}
+{{ greeting|lower|truncatewords:2|linebreaks }}
+{{ list|join:", " }}
+{{ value|default:"nothing"|linebreaks }}
+{{ value|length }}
+{{ size_file|filesizeformat }}
+
+<ul>
+{% for athlete in athlete_list %}
+    <li>{{ athlete }}</li>
+{% endfor %}
+</ul>
+
+{% if athlete_list %}
+    Number of athletes: {{ athlete_list|length }}
+{% elif athlete_in_locker_room_list %}
+    Athletes should be out of the locker room soon!
+{% else %}
+    No athletes.
+{% endif %}
+<br>
+
+{% if athlete_list|length > 1 %}
+    Team: <br> {% for athlete in athlete_list %} {{athlete}} <br> {% endfor %}
+{% else %}
+    Athlete: {{ athlete_list.0.name }}
+{% endif %}
+<br>
